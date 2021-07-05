@@ -13,7 +13,10 @@ RUN apt-get update && apt install python3 -y
 RUN apt-get -y install python3-pip
 RUN apt-get install libpq-dev -y
 RUN pip3 install ipython-sql psycopg2
+RUN pip3 install pyspark
 RUN pip3 install jupyter
+RUN pip3 install findspark
+RUN pip3 install sparksql-magic
 
 RUN apt-get update && apt install wget -y
 RUN wget https://downloads.apache.org/spark/spark-3.1.2/spark-3.1.2-bin-hadoop2.7.tgz
