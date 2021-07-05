@@ -1,8 +1,13 @@
 FROM ubuntu:20.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install git -y
 RUN apt-get update && apt-get install openjdk-8-jdk -y
 RUN apt-get update && apt install postgresql-12 -y
 
+COPY .devcontainer/betterPS1.bashrc /root/.devcontainer/betterPS1.bashrc 
+RUN cat /root/.devcontainer/betterPS1.bashrc >> /root/.bashrc
 
 RUN apt-get update && apt install python3 -y
 RUN apt-get -y install python3-pip
