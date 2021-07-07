@@ -17,6 +17,7 @@ RUN pip3 install pyspark
 RUN pip3 install jupyter
 RUN pip3 install findspark
 RUN pip3 install sparksql-magic
+RUN pip3 install requests
 
 RUN apt-get update && apt install wget -y
 RUN wget https://downloads.apache.org/spark/spark-3.1.2/spark-3.1.2-bin-hadoop2.7.tgz
@@ -24,7 +25,14 @@ RUN tar xvf spark-3.1.2-bin-hadoop2.7.tgz
 RUN mv spark-3.1.2-bin-hadoop2.7 /opt/spark
 RUN rm spark-3.1.2-bin-hadoop2.7.tgz
 
+RUN apt-get install sudo -y
 
+RUN echo 'root:root' | chpasswd
+RUN echo 'postgres:postgres' | chpasswd
+RUN service postgresql start && sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
+
+
+ENV PGPASSWORD=postgres
 ENV SPARKHOME="/opt/spark"
 ENV PATH="${SPARKHOME}/bin:${SPARKHOME}/sbin:${PATH}"
 

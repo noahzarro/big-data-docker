@@ -8,7 +8,11 @@ Run:
 jupyter notebook --allow-root
 ```
 
-Connect to:
-```
+## Postges
 
+Start:
+```bash
+service postgresql start
+cd /workspaces/docker/bigdata-exam-environment/Environment/postgres/
+sudo -u postgres ./import.sh
 ```
