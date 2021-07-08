@@ -31,7 +31,6 @@ RUN echo 'root:root' | chpasswd
 RUN echo 'postgres:postgres' | chpasswd
 RUN service postgresql start && sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
 
-
 ENV PGPASSWORD=postgres
 ENV SPARKHOME="/opt/spark"
 ENV PATH="${SPARKHOME}/bin:${SPARKHOME}/sbin:${PATH}"
